@@ -1,0 +1,313 @@
+﻿<Window x:Class="QuanLyBanHang.GUI.HangHoaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHang.GUI"
+        mc:Ignorable="d"
+        Title="QUẢN LÝ SẢN PHẨM"
+        Height="490"
+        Width="815"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodel="clr-namespace:QuanLyBanHang.VIEWMODEL" d:DataContext="{d:DesignInstance Type=viewmodel:QLSanPhamViewModel}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource QLSanPhamVM}">
+    <Grid>
+        <materialDesign:Card Margin="15 15 15 15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="250"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="25"
+                           Text="SẢN PHẨM"
+                           Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Margin="0,-3,0,28"></TextBlock>
+                <!-- Nhap Info -->
+                <Grid
+                      Margin="16,35,14,25" Grid.RowSpan="2">
+                    <Grid.Resources>
+                        <Style TargetType="RowDefinition">
+                            <Setter Property="Height"
+                                    Value="30"></Setter>
+                        </Style>
+
+                        <Style TargetType="Button"
+                               BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Setter Property="Margin"
+                                    Value="5 5 0 0"></Setter>
+                            <Setter Property="Width"
+                                    Value="120"></Setter>
+                            <Setter Property="Height"
+                                    Value="25"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="127.619"></ColumnDefinition>
+                        <ColumnDefinition Width="22.381"/>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0" Grid.ColumnSpan="2">Mã SP</TextBlock>
+                    <TextBox Grid.Row="0"
+                             Grid.Column="2"
+                             Text="{Binding Path=MaSp ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0" Grid.ColumnSpan="2">Tên SP</TextBlock>
+                    <TextBox Grid.Row="1"
+                             Grid.Column="2"
+                             Text="{Binding Path=TenSp, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <Button Grid.Row="1" 
+                            Grid.Column="3" 
+                            Content="Tìm theo tên" Command="{Binding TimSPTheoTenCommand}" Margin="17,5,13,0"></Button>
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="0" Grid.ColumnSpan="2">Loại SP</TextBlock>
+                    <ComboBox Grid.Row="2"
+                              Grid.Column="2"
+                              ItemsSource="{Binding Path=ListLoaiSP, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                              DisplayMemberPath="TenLoai"
+                              SelectedValuePath="MaLoai"
+                              SelectedValue="{Binding Path=MaLoai}"
+                              SelectedItem="{Binding Path=SelectedLoaiSP}"></ComboBox>
+                    <Button Grid.Row="2"
+                            Grid.Column="3"
+                            Content="Liệt kê loại"
+                            Command="{Binding XemDSTheoLoaiCommand}" Margin="17,5,13,0"></Button>
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="0" Grid.ColumnSpan="2">Mô tả</TextBlock>
+                    <TextBox Grid.Row="3"
+                             Grid.Column="2"
+                             Text="{Binding Path=MoTa, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <Button Grid.Row="3"
+                            Grid.Column="3"
+                            Content="Tất cả"
+                            Command="{Binding HienThiTatCaSPCommand}" Margin="17,5,13,0"></Button>
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="0" Grid.ColumnSpan="2">DVT</TextBlock>
+                    <TextBox Grid.Row="4"
+                             Grid.Column="2"
+                             Text="{Binding Path=DVT, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="0" Grid.ColumnSpan="2">Đơn giá</TextBlock>
+                    <TextBox Grid.Row="5"
+                             Grid.Column="2"
+                             Text="{Binding Path=DonGia, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <TextBlock Grid.Row="6"
+                               Grid.Column="0" Grid.ColumnSpan="2">Số lượng</TextBlock>
+                    <TextBox Grid.Row="6"
+                             Grid.Column="2"
+                             Text="{Binding Path=SoLuong, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <TextBlock Grid.Row="7"
+           Grid.Column="0" Grid.ColumnSpan="2">Hình ảnh</TextBlock>
+                    <Grid Grid.Row="7" Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding HinhAnh, UpdateSourceTrigger=PropertyChanged}"
+           Height="50" Width="50" Grid.Column="0" Stretch="UniformToFill"/>
+                        <Button Command="{Binding SelectImageCommand}"
+        VerticalAlignment="Center" HorizontalAlignment="Right"
+        Width="70" Height="40" Margin="5,0,0,0" ToolTip="Select Image">
+                            <materialDesign:PackIcon Kind="ImageEdit" />
+                        </Button>
+
+                    </Grid>
+
+
+
+
+                </Grid>
+                <!-- Nut chuc nang -->
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button"
+                               BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Setter Property="Margin"
+                                    Value="5 0 0 0"></Setter>
+                            <Setter Property="Width"
+                                    Value="80"></Setter>
+                            <Setter Property="Height"
+                                    Value="25"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Content="Prev"
+                            Margin="0 0 25 0"
+                            Width="80" Command="{Binding PrevPageCommand}"></Button>
+                    <ComboBox Width="150"
+                              Name="cboComboBoxPaging"
+                              ItemsSource="{Binding Path=ComboBoxPagingList, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                              DisplayMemberPath="Display"
+                              SelectedValuePath="Page"
+                              SelectedItem="{Binding ComboBoxPagingSelectedItem, UpdateSourceTrigger=PropertyChanged,  
+                    ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                              SelectedValue="{Binding CurrentPage , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ComboBoxPagingSelectionChangedCommand}"
+                                                       CommandParameter = "{Binding ElementName=cboComboBoxPaging}">
+
+                                </i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                    <Button Content="Next"
+                            Margin="25 0 25 0"
+                            Width="80" Command="{Binding NextPageCommand}"></Button>
+                    <Button Content="Thêm"
+                            Command="{Binding ThemCommand}"></Button>
+                    <Button Content="Lưu"
+                            Command="{Binding LuuCommand}"></Button>
+                    <Button Content="Xoá"
+                            Command="{Binding XoaCommand}"></Button>
+                </StackPanel>
+                <!-- Lọc theo khoảng giá -->
+                <Grid Grid.Row="3"
+                      Margin="15 0 15 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Từ giá"></TextBlock>
+                    <TextBox Grid.Row="0"
+                                Grid.Column="1"
+                             Text="{Binding Path=TuGia, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource TextToDecimalConverter}}" ></TextBox>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="2"
+                               Text="Đến giá"></TextBlock>
+                    <TextBox Grid.Row="0"
+                                Grid.Column="3"
+                             Text="{Binding Path=DenGia, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,  Converter={StaticResource TextToDecimalConverter}}"></TextBox>
+                    <StackPanel Height="25"
+                                Grid.Row="0"
+                                Grid.Column="4"
+                                Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style BasedOn="{StaticResource MaterialDesignFlatMidBgButton}"
+                                   TargetType="Button">
+                                <Setter Property="Margin"
+                                        Value="5 0 5 0"></Setter>
+                                <Setter Property="Width"
+                                        Value="80"></Setter>
+                                <Setter Property="Height"
+                                        Value="25"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Command="{Binding TimTheoKhoangGiaCommand}"
+                                Content="Tìm"></Button>
+                    </StackPanel>
+
+                </Grid>
+                <!-- Danh sách-->
+                <StackPanel Grid.Row="4"
+                            Margin="15 0 15 0">
+                    <DataGrid AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="All"
+                              ItemsSource="{Binding List, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                              SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell"
+                                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                       Value="True" />
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=DataGridRow}}"
+                                                       Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background"
+                                                Value="Red" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <!-- Mã sản phẩm -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding MaSp}"
+                                                               Header="Mã sản phẩm" />
+                            <!-- Tên sản phẩm -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding TenSp}"
+                                                               Header="Tên sản phẩm">
+                            </materialDesign:DataGridTextColumn>
+                            <!-- Mô tả -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding MoTa}"
+                                                               Header="Mô tả">
+
+                            </materialDesign:DataGridTextColumn>
+                            <!-- Đơn vị tính -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding DVT}"
+                                                               Header="Đơn vị tính">
+
+                            </materialDesign:DataGridTextColumn>
+                            <!-- Tên loại -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding MaLoai}"
+                                                               Header="Loại sản phẩm">
+
+                            </materialDesign:DataGridTextColumn>
+                            <!-- Đơn giá -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding DonGia}"
+                                                               Header="Đơn giá">
+
+                            </materialDesign:DataGridTextColumn>
+                            <!-- Số lượng -->
+                            <materialDesign:DataGridTextColumn Binding="{Binding SoLuong}"
+                                                               Header="Số lượng">
+                            </materialDesign:DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Hình Ảnh" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <!-- Image display -->
+                                            <Image Source="{Binding HinhAnh, UpdateSourceTrigger=PropertyChanged}" 
+                       Height="50" Width="50" Stretch="UniformToFill"/>
+                                            <!-- Button to trigger image selection -->
+                                          
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>

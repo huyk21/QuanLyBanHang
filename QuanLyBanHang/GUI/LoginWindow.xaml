@@ -1,0 +1,105 @@
+﻿<Window x:Class="QuanLyBanHang.GUI.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHang.GUI"
+        mc:Ignorable="d"
+        Title="Đăng nhập"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Width="400"
+        Height="300"
+        Name="loginWindow"
+        DataContext="{StaticResource LoginVM}">
+
+    <Grid>
+        <materialDesign:Card Width="350"
+                             Height="240"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin"
+                                Value="15 15 15 0"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel>
+                        <TextBlock>Tên đăng nhập</TextBlock>
+                        <TextBox x:Name="NameTextBox"
+                                 materialDesign:HintAssist.Hint="Name">
+                            <TextBox.Text>
+                                <Binding Path="MaTK"
+                                         UpdateSourceTrigger="PropertyChanged">
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel>
+                        <TextBlock>Mật khẩu</TextBlock>
+                        <PasswordBox x:Name="PasswordBox"
+                                     materialDesign:HintAssist.Hint="Password"
+                                     materialDesign:TextFieldAssist.HasClearButton="True">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                                           CommandParameter="{Binding ElementName=PasswordBox}">
+
+                                    </i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <StackPanel>
+                        <CheckBox IsChecked="{Binding LuuLaiMatKhau}">Lưu lại mật khẩu</CheckBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                            Width="110"
+                            Content="Đăng nhập"
+                            IsDefault="true"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                            ToolTip="MaterialDesignFlatMidButton"
+                            Command="{Binding LoginCommand}"
+                            CommandParameter="{Binding ElementName=loginWindow}">
+                    </Button>
+                    <Button Grid.Column="1"
+                            Width="110"
+                            Content="Đóng"
+                            Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=loginWindow}"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Background="Red"
+                            Style="{DynamicResource MaterialDesignFlatSecondaryLightBgButton}"
+                            ToolTip="MaterialDesignFlatSecondaryLightBgButton">
+                    </Button>
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>

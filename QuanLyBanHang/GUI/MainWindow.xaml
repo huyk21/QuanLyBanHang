@@ -1,0 +1,220 @@
+﻿<Window x:Class="QuanLyBanHang.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHang.GUI"
+        mc:Ignorable="d"
+        Title="CHƯƠNG TRÌNH QUẢN LÝ BÁN HÀNG"
+        Height="545"
+        Width="965"
+        Name="mainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodel="clr-namespace:QuanLyBanHang.VIEWMODEL" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{DynamicResource MainVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="46*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!-- Menu-->
+        <Grid Grid.Row="0"
+      VerticalAlignment="Top"
+      Grid.ColumnSpan="3">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+               <StackPanel.Resources>
+    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Background" Value="#2196F3"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="Black" Opacity="0.2" BlurRadius="3" ShadowDepth="2"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#1E88E5"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Black" Opacity="0.4" BlurRadius="5" ShadowDepth="4"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</StackPanel.Resources>
+
+                <!-- Enhanced button design and icons -->
+                <Button Command="{Binding NhanVienCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="AccountCircle" Height="30" Width="30" VerticalAlignment="Center"/>
+                        <TextBlock Text="Nhân viên" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding KhachHangCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="Face" Height="30" Width="30" VerticalAlignment="Center"/>
+                        <TextBlock Text="Khách hàng" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding QLHangHoaCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="ShoppingBasket" Height="30" Width="30" VerticalAlignment="Center"/>
+                        <TextBlock Text="QL Hàng hoá" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding QLHoaDonCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="Receipt" Height="30" Width="30" VerticalAlignment="Center"/>
+                        <TextBlock Text="QL Đơn hàng" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding BaoCaoCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="ChartAreaspline" Height="30" Width="30" VerticalAlignment="Center"/>
+                        <TextBlock Text="Báo cáo" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding CauHinhCommand}" Width="116">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="Settings" Height="30" Width="30" VerticalAlignment="Center"/>
+                        <TextBlock Text="Cấu hình" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="Width" Value="160"/>
+                        <Setter Property="Height" Value="60"/>
+                        <Setter Property="Background" Value="#2196F3"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="Black" Opacity="0.2" BlurRadius="3" ShadowDepth="2"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1E88E5"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Black" Opacity="0.4" BlurRadius="5" ShadowDepth="4"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+
+                <!-- Updated button designs and icons -->
+                <Button Command="{Binding LoaiSanPhamCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="Tag" Height="30" Width="30" VerticalAlignment="Center" Foreground="White" Background="#388E3C"/>
+                        <!-- Changed icon for better representation -->
+                        <TextBlock Text="Loại sản phẩm" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding ImportSanPhamCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="ImportExport" Height="30" Width="30" VerticalAlignment="Center" Foreground="White" Background="#388E3C"/>
+                        <!-- Changed icon for better representation -->
+                        <TextBlock Text="Import sản phẩm" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main -->
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Cards Displaying Various Information -->
+            <Grid Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="5 0 0 0">
+                    <StackPanel.Resources>
+                        <Style TargetType="materialDesign:Card">
+                            <Setter Property="Margin" Value="5"/>
+                            <Setter Property="Width" Value="300"/>
+                            
+                        </Style>
+                    </StackPanel.Resources>
+                    
+                    <materialDesign:Card Padding="10" Background="#2196F3" Foreground="White">
+                        <StackPanel>
+                            <TextBlock Text="Số sản phẩm đang bán" Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="0,0,0,5"/>
+                            <Separator Style="{DynamicResource MaterialDesignLightSeparator}"/>
+                            <TextBlock Text="{Binding SoSPDangBan , Mode=TwoWay}" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <!-- Card for Total Orders This Week -->
+                    <materialDesign:Card Padding="10" Background="#4CAF50" Foreground="White">
+                        <StackPanel>
+                            <TextBlock Text="Tổng đơn hàng trong tuần" Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="0,0,0,5"/>
+                            <Separator Style="{DynamicResource MaterialDesignLightSeparator}"/>
+                            <TextBlock Text="{Binding SoDonHangTrongTuan}" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <!-- Card for Products About to Run Out -->
+                    <materialDesign:Card Padding="10" Background="#FFC107" Foreground="White">
+                        <StackPanel>
+                            <TextBlock Text="Sản phẩm sắp hết hàng" Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="0,0,0,5"/>
+                            <Separator Style="{DynamicResource MaterialDesignLightSeparator}"/>
+                            <TextBlock Text="{Binding SoSPHetHang}" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Margin="0,5,0,0"/>
+                            <Separator Style="{DynamicResource MaterialDesignLightSeparator}"/>
+                            <ListView ItemsSource="{Binding ProductsAboutToRunOut}" Background="Transparent" BorderThickness="0">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="5" Margin="0,2">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                                <TextBlock Text="{Binding Name}" Width="150" Foreground="Black" Margin="5,0"/>
+                                                <TextBlock Text="{Binding Quantity}" Width="50" Foreground="Red" Margin="5,0" HorizontalAlignment="Right"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                </StackPanel>
+            </Grid>
+
+            <!-- Placeholder for additional content -->
+            <Grid Grid.Row="1"/>
+        </Grid>
+
+    </Grid>
+</Window>

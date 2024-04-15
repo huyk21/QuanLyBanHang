@@ -1,0 +1,103 @@
+﻿<Window x:Class="QuanLyBanHang.GUI.CauHinhWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHang.GUI"
+        mc:Ignorable="d"
+        Title="Cấu hình"
+        Height="250"
+        Width="550"
+        Name="frmSettings"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource CauHinhVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding WindowClosingCommand}"
+                                   CommandParameter="{Binding ElementName=frmSettings}">
+
+            </i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <materialDesign:Card>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="25"
+                           Text="Cấu hình"
+                           Grid.Row="0"
+                           HorizontalAlignment="Left"
+                           Margin="51,25,0,0"
+                           Grid.Column="1"></TextBlock>
+                <!-- Nhap Info -->
+                <Grid Grid.Row="1"
+                      Margin="15,0,15,0"
+                      Grid.ColumnSpan="2">
+                    <Grid.Resources>
+                        <Style TargetType="RowDefinition">
+                            <Setter Property="Height"
+                                    Value="25"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0">Số lượng sản phẩm mỗi trang</TextBlock>
+                    <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding Path=SoLSanPhamMoiTrang ,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0">Mở lại màn hình cuối</TextBlock>
+                    <CheckBox Grid.Row="1"
+                              Grid.Column="1"
+                              IsChecked="{Binding Path=MoLaiManHinhCuoi, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                </Grid>
+                <!-- Nut chuc nang -->
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            Grid.Column="1"
+                            Margin="15,0,0,0">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button"
+                               BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Setter Property="Margin"
+                                    Value="5 0 0 0"></Setter>
+                            <Setter Property="Width"
+                                    Value="80"></Setter>
+                            <Setter Property="Height"
+                                    Value="25"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Content="Lưu"
+                            Command="{Binding LuuCommand}"></Button>
+                    <Button Content="Đóng"
+                            Command="{Binding DongCommand}" CommandParameter="{Binding ElementName=frmSettings}"></Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>

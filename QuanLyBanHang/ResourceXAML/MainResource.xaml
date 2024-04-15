@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:QuanLyBanHang.VIEWMODEL"
+                    xmlns:local="clr-namespace:QuanLyBanHang.Converter">
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:QLNhanVienViewModel x:Key="QLNhanVienVM"></viewmodel:QLNhanVienViewModel>
+    <viewmodel:QLKhachHangViewModel x:Key="QLKhachHangVM"></viewmodel:QLKhachHangViewModel>
+    <viewmodel:QLSanPhamViewModel x:Key="QLSanPhamVM"></viewmodel:QLSanPhamViewModel>
+    <viewmodel:QLDonHangViewModel x:Key="QLDonHangVM"></viewmodel:QLDonHangViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:BaoCaoViewModel x:Key="BaoCaoVM"></viewmodel:BaoCaoViewModel>
+    <viewmodel:CauHinhViewModel x:Key="CauHinhVM"></viewmodel:CauHinhViewModel>
+    <viewmodel:LoaiSanPhamViewModel x:Key="LoaiSPVM"></viewmodel:LoaiSanPhamViewModel>
+    <viewmodel:ImportHangHoaViewModel x:Key="ImportHangHoa"></viewmodel:ImportHangHoaViewModel>
+    <local:TextToDecimalConverter x:Key="TextToDecimalConverter" />
+</ResourceDictionary>
